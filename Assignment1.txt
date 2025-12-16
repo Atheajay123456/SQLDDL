@@ -1,0 +1,231 @@
+Fetching global names for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| institute          |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.0027 sec)
+ MySQL  localhost:33060+ ssl  SQL > create database management;
+Query OK, 1 row affected (0.0281 sec)
+ MySQL  localhost:33060+ ssl  SQL > use management;
+Default schema set to `management`.
+Fetching global names, object names from `management` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  management  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| institute          |
+| management         |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.0025 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > use management;
+Default schema set to `management`.
+Fetching global names, object names from `management` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  management  SQL > create table student_record;
+
+ERROR: 4028: A table must have at least one visible column.
+ MySQL  localhost:33060+ ssl  management  SQL > show table;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ MySQL  localhost:33060+ ssl  management  SQL > create table student_record(student_id int,Name varchar(50),CGPA varchar(10));
+Query OK, 0 rows affected (0.0554 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > desc student_record;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| Name       | varchar(50) | YES  |     | NULL    |       |
+| CGPA       | varchar(10) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.0058 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record add age int after Name;
+Query OK, 0 rows affected (0.0701 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  management  SQL > desc student_record;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| Name       | varchar(50) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
+| CGPA       | varchar(10) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.0046 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record rename column CGPA to Grade varchar(10);
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10)' at line 1
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record rename column CGPA to Grade;
+Query OK, 0 rows affected (0.0388 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  management  SQL > desc student_record;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| Name       | varchar(50) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
+| Grade      | varchar(10) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.0041 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record add Email varchar(50);
+Query OK, 0 rows affected (0.0614 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  management  SQL > desc student_record;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| student_id | int         | YES  |     | NULL    |       |
+| Name       | varchar(50) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
+| Grade      | varchar(10) | YES  |     | NULL    |       |
+| Email      | varchar(50) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.0039 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record add Phone bignit first;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bignit first' at line 1
+ MySQL  localhost:33060+ ssl  management  SQL >  alter table student_record add column Phone bignit first;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bignit first' at line 1
+ MySQL  localhost:33060+ ssl  management  SQL > alter table  student_record add column phone bigint first;
+Query OK, 0 rows affected (0.0887 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  management  SQL >  desc student_record;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| phone      | bigint      | YES  |     | NULL    |       |
+| student_id | int         | YES  |     | NULL    |       |
+| Name       | varchar(50) | YES  |     | NULL    |       |
+| age        | int         | YES  |     | NULL    |       |
+| Grade      | varchar(10) | YES  |     | NULL    |       |
+| Email      | varchar(50) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+6 rows in set (0.0045 sec)
+ MySQL  localhost:33060+ ssl  management  SQL >
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record add column address varchar(100) after Name;
+Query OK, 0 rows affected (0.0814 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  management  SQL > desc student_record;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| phone      | bigint       | YES  |     | NULL    |       |
+| student_id | int          | YES  |     | NULL    |       |
+| Name       | varchar(50)  | YES  |     | NULL    |       |
+| address    | varchar(100) | YES  |     | NULL    |       |
+| age        | int          | YES  |     | NULL    |       |
+| Grade      | varchar(10)  | YES  |     | NULL    |       |
+| Email      | varchar(50)  | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+7 rows in set (0.0046 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record modify Grade char(5);
+Query OK, 0 rows affected (0.1502 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  management  SQL > desc student_record;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| phone      | bigint       | YES  |     | NULL    |       |
+| student_id | int          | YES  |     | NULL    |       |
+| Name       | varchar(50)  | YES  |     | NULL    |       |
+| address    | varchar(100) | YES  |     | NULL    |       |
+| age        | int          | YES  |     | NULL    |       |
+| Grade      | char(5)      | YES  |     | NULL    |       |
+| Email      | varchar(50)  | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+7 rows in set (0.0040 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record student_id to roll_number;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'student_id to roll_number' at line 1
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record rename student_id to roll_number;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to roll_number' at line 1
+ MySQL  localhost:33060+ ssl  management  SQL >  alter table student_record rename column student_id to roll_number;
+Query OK, 0 rows affected (0.0435 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  management  SQL > desc student_record;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| phone       | bigint       | YES  |     | NULL    |       |
+| roll_number | int          | YES  |     | NULL    |       |
+| Name        | varchar(50)  | YES  |     | NULL    |       |
+| address     | varchar(100) | YES  |     | NULL    |       |
+| age         | int          | YES  |     | NULL    |       |
+| Grade       | char(5)      | YES  |     | NULL    |       |
+| Email       | varchar(50)  | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+7 rows in set (0.0050 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > insert into student_record(phone,roll_number,Name,address,age,Grade,Email) values(9992289472,108,'Chintu','hyderabad,india',22,'A+','Chintu@gmail.com');
+Query OK, 1 row affected (0.0308 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > insert into student_record(phone,roll_number,Name,address,age,Grade,Email) values(9982789076,109,'Banttu','Adilabad,india',22,'A','Banttu@gmail.com');
+Query OK, 1 row affected (0.0175 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > insert into student_record(phone,roll_number,Name,address,age,Grade,Email) values(9942854369,110,'Kanthi','karimnagar,india',22,'B','Kanthi@gmail.com');
+Query OK, 1 row affected (0.0188 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > desc student_record;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| phone       | bigint       | YES  |     | NULL    |       |
+| roll_number | int          | YES  |     | NULL    |       |
+| Name        | varchar(50)  | YES  |     | NULL    |       |
+| address     | varchar(100) | YES  |     | NULL    |       |
+| age         | int          | YES  |     | NULL    |       |
+| Grade       | char(5)      | YES  |     | NULL    |       |
+| Email       | varchar(50)  | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+7 rows in set (0.0042 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > select * from student_record;
++------------+-------------+--------+------------------+-----+-------+------------------+
+| phone      | roll_number | Name   | address          | age | Grade | Email            |
++------------+-------------+--------+------------------+-----+-------+------------------+
+| 9992289472 |         108 | Chintu | hyderabad,india  |  22 | A+    | Chintu@gmail.com |
+| 9982789076 |         109 | Banttu | Adilabad,india   |  22 | A     | Banttu@gmail.com |
+| 9942854369 |         110 | Kanthi | karimnagar,india |  22 | B     | Kanthi@gmail.com |
++------------+-------------+--------+------------------+-----+-------+------------------+
+3 rows in set (0.0017 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > select Name,Grade from student_record;
++--------+-------+
+| Name   | Grade |
++--------+-------+
+| Chintu | A+    |
+| Banttu | A     |
+| Kanthi | B     |
++--------+-------+
+3 rows in set (0.0015 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > select roll_number,Name,Email from student_record;
++-------------+--------+------------------+
+| roll_number | Name   | Email            |
++-------------+--------+------------------+
+|         108 | Chintu | Chintu@gmail.com |
+|         109 | Banttu | Banttu@gmail.com |
+|         110 | Kanthi | Kanthi@gmail.com |
++-------------+--------+------------------+
+3 rows in set (0.0014 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > alter table student_record drop column address;
+Query OK, 0 rows affected (0.0444 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  management  SQL > rename table student_record to student_sheet;
+Query OK, 0 rows affected (0.0446 sec)
+ MySQL  localhost:33060+ ssl  management  SQL > select * from student_sheet;
+
++------------+-------------+--------+-----+-------+------------------+
+| phone      | roll_number | Name   | age | Grade | Email            |
++------------+-------------+--------+-----+-------+------------------+
+| 9992289472 |         108 | Chintu |  22 | A+    | Chintu@gmail.com |
+| 9982789076 |         109 | Banttu |  22 | A     | Banttu@gmail.com |
+| 9942854369 |         110 | Kanthi |  22 | B     | Kanthi@gmail.com |
++------------+-------------+--------+-----+-------+------------------+
+3 rows in set (0.0039 sec)
